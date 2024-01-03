@@ -4,6 +4,10 @@
 
 int main() {
     std::printf("Running test file.\n\n");
-    std::vector<int> v{10, 2, 614, 1265};
+
+    // create neural net
+    std::vector<int> v{2, 4, 2};
     NeuralNetwork nn = NeuralNetwork(v);
+
+    std::printf("Tests completed successfully.\n\n");
 }

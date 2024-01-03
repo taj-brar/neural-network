@@ -1,8 +1,26 @@
 #pragma once
+
 #include <vector>
 
+class Layer;
+
+struct Connection {
+    double weight;
+    double deltaWeight;
+};
+
 class Neuron {
+public:
+    Neuron(int index, int numPrevConns);
+
+    void forwardProp(Layer &prevLayer);
+
 private:
-    float activation;
-    std::vector<int> prev_connections;
+    int index;
+    double activationValue;
+    std::vector<Connection> prevConns;
+
+    static double getRandWeight();
+    static double activationFunc(double x);
+    static double activationFuncDeriv(double x);
 };
