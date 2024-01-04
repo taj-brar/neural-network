@@ -25,6 +25,10 @@ void Neuron::forwardProp(Layer &prevLayer) {
     this->activationValue = activationFunc(sum);
 }
 
+void Neuron::setActivationVal(double newVal) {
+    this->activationValue = newVal;
+}
+
 double Neuron::getRandWeight() {
     return rand() / double(RAND_MAX); // NOLINT(*-msc50-cpp)
 }

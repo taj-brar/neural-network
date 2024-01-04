@@ -9,5 +9,7 @@ int main() {
     std::vector<int> v{2, 4, 2};
     NeuralNetwork nn = NeuralNetwork(v);
 
+    nn.train();
+
     std::printf("Tests completed successfully.\n\n");
 }

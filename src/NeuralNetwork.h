@@ -12,6 +12,6 @@ public:
 private:
     std::vector<Layer> layers;
 
-    void forward_prop();
-    void back_prop();
+    void forwardProp();
+    void backProp();
 };

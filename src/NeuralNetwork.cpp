@@ -7,3 +7,19 @@ NeuralNetwork::NeuralNetwork(const std::vector<int> &topology) {
         this->layers.emplace_back(topology[i], num_neurons_prev);
     }
 }
+
+void NeuralNetwork::forwardProp() {
+    // start forward propagation at second layer
+    for (int i = 1; i < this->layers.size(); i++) {
+        Layer &prevLayer = this->layers[i - 1];
+        Layer &currLayer = this->layers[i];
+        currLayer.forwardProp(prevLayer);
+    }
+}
+
+void NeuralNetwork::train() {
+    // temporary implementation for testing
+    std::vector<double> v{0.5 ,0.3};
+    this->layers[0].setNeuronVals(v);
+    forwardProp();
+}
