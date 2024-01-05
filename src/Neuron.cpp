@@ -2,9 +2,9 @@
 #include "Layer.h"
 #include <random>
 
-Neuron::Neuron(int index, int numPrevConns) {
+Neuron::Neuron(int index, int numPrevConns, double initActivationVal) {
     this->index = index;
-    this->activationValue = 0;
+    this->activationValue = initActivationVal;
 
     // set random weights to start
     for (int i = 0; i < numPrevConns; i++) {

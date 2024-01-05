@@ -11,7 +11,7 @@ struct Connection {
 
 class Neuron {
 public:
-    Neuron(int index, int numPrevConns);
+    Neuron(int index, int numPrevConns, double initActivationVal);
     void forwardProp(Layer &prevLayer);
     void setActivationVal(double newVal);
 
