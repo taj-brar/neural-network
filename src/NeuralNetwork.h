@@ -13,5 +13,5 @@ private:
     std::vector<Layer> layers;
 
     void forwardProp();
-    void backProp();
+    void backProp(const std::vector<double> &targetVals);
 };

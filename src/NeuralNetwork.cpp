@@ -18,9 +18,35 @@ void NeuralNetwork::forwardProp() {
     }
 }
 
+void NeuralNetwork::backProp(const std::vector<double> &targetVals) {
+    // get output layer's RMS error
+    Layer &outputLayer = layers.back();
+    double error = outputLayer.getOutputError(targetVals);
+
+    // calculate gradient for output layer
+    outputLayer.calcGradientOutput(targetVals);
+
+    // calculate gradients for hidden layers
+    for (unsigned i = layers.size() - 2; i > 0; i--) {
+        Layer &currLayer = layers[i];
+        Layer &nextLayer = layers[i + 1];
+
+        currLayer.calcGradientHidden(nextLayer);
+    }
+
+    // update all weights
+    for (unsigned i = layers.size() - 1; i > 0; i--) {
+        Layer &currLayer = layers[i];
+        Layer &prevLayer = layers[i - 1];
+
+        currLayer.updateWeights(prevLayer);
+    }
+
+}
+
 void NeuralNetwork::train() {
     // temporary implementation for testing
-    std::vector<double> v{0.5 ,0.3};
+    std::vector<double> v{0.5, 0.3};
     this->layers[0].setNeuronVals(v);
     forwardProp();
 }
