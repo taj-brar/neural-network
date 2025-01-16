@@ -15,9 +15,15 @@ void Layer::forwardProp(Layer &prevLayer) {
         this->neurons[i].forwardProp(prevLayer);
 }
 
-void Layer::setNeuronVals(std::vector<double> &vals) {
+void Layer::setNeuronVals(const std::vector<double> &vals) {
     for (int i = 0; i < vals.size() && i < this->neurons.size(); i++)
         this->neurons[i].setActivationVal(vals[i]);
+}
+
+void Layer::getNeuronVals(std::vector<double> &resultVals) {
+    // exclude bias neuron
+    for (int i = 0; i < this->neurons.size() - 1; i++)
+        resultVals.push_back(neurons[i].activationValue);
 }
 
 double Layer::getOutputError(const std::vector<double> &targetVals) {
